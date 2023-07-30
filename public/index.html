@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Chat App</title>
+
+		<link rel="stylesheet" href="./styles.css" />
+
+		<link
+			rel="shortcut icon"
+			href="./speech-bubble-svgrepo-com.svg"
+			type="image/x-icon"
+		/>
+	</head>
+	<body>
+		<div id="form-div">
+			<div id="form-div2">
+				<div id="images">
+					<img src="../assets/Favicon.svg" alt="" />
+					<img src="../assets/Logo.svg" alt="" width="30%" />
+				</div>
+				<form action="" class="form-username">
+					<h1 style="font-family: 'Segoe print'; font-size: 20px">
+						Ready to Send message for your best Friends
+					</h1>
+					<p>Username</p>
+					<input
+						type="text"
+						id="username-input"
+						placeholder="enter username"
+					/>
+					<br />
+					<button id="join-btn" type="submit">Join Chat</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="chatroom-container">
+			<div class="chatroom-header">Chatroom</div>
+			<div class="messages" id="message-container">
+				<!-- <div class="message sent">Hey</div>
+				<div class="message">Hi</div> -->
+			</div>
+			<div>
+				<input
+					type="text"
+					id="message-input"
+					placeholder="Enter Message"
+				/>
+				<button id="send-button">Send</button>
+			</div>
+		</div>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<!-- <script>
+			const socket = io();
+		</script> -->
+		<script src="./script.js"></script>
+	</body>
+</html>
