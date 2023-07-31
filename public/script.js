@@ -20,46 +20,78 @@ document.getElementById("join-btn").addEventListener("click", (event) => {
 
 document.getElementById("send-button").addEventListener("click", (event) => {
 	event.preventDefault();
-	const data = {
-		username: username,
-		message: document.getElementById("message-input").value,
-	};
 
-	// if "io" is emitting anything then only "sockets" can listen
-	// if "sockets" is emitting anything then only "io" can listen
-	// io is on the server side
-	// socket is on the client side
+	// const date = new Date();
+	// const local = date.toLocaleTimeString("en-US");
+	// console.log(local);
+	// console.log(
+	// 	date.getDate() + ":" + (date.getMonth() + 1) + ":" + date.getFullYear()
+	// );
 
-	//sending message to io because socket is emitting
-	socket.emit("message", data);
+	if (document.getElementById("message-input").value.trim() === "") {
+		alert("Please write something before sending");
+	} else {
+		const data = {
+			username: username,
+			message: document.getElementById("message-input").value,
+		};
 
-	//whatever message i am sending i need to show this on ui for user
-	addMessageFn(data);
+		// if "io" is emitting anything then only "sockets" can listen
+		// if "sockets" is emitting anything then only "io" can listen
+		// io is on the server side
+		// socket is on the client side
+
+		//sending message to io because socket is emitting
+		socket.emit("message", data);
+
+		//whatever message i am sending i need to show this on ui for user
+		addMessageFn(data, "send");
+	}
 });
 
 // receiving the message
 socket.on("message", (data) => {
 	//before adding this, just check if you are the sender
 	if (data.username !== username) {
-		addMessageFnRe(data);
+		addMessageFn(data, "receive");
 	}
 	// addMessageFnRe(data);
 });
 
 // working for sent messages
-function addMessageFn(data) {
+function addMessageFn(data, message) {
+	const date = new Date();
+	const local = date.toLocaleTimeString("en-US");
+	// console.log(local);
+	// console.log(
+	// 	date.getDate() + ":" + (date.getMonth() + 1) + ":" + date.getFullYear()
+	// );
+
+	var dateTimeDiv = document.createElement("div");
+	dateTimeDiv.innerText = `${date.getDate()}-${
+		date.getMonth() + 1
+	}-${date.getFullYear()}  ${local}`;
+
 	var msgDiv = document.createElement("div");
 	msgDiv.innerText = `${data.username}: ${data.message}`;
-	msgDiv.setAttribute("class", "message sent");
+	if (message === "send") {
+		msgDiv.setAttribute("class", "message sent");
+		dateTimeDiv.setAttribute("class", "sent-date");
+	} else {
+		msgDiv.setAttribute("class", "message received");
+		dateTimeDiv.setAttribute("class", "received-date");
+	}
+
+	document.getElementById("message-container").appendChild(dateTimeDiv);
 	document.getElementById("message-container").appendChild(msgDiv);
 	document.getElementById("message-input").value = "";
 }
 
 // working for receiving messages
-function addMessageFnRe(data) {
-	var msgDiv = document.createElement("div");
-	msgDiv.innerText = `${data.username}: ${data.message}`;
-	msgDiv.setAttribute("class", "message received");
-	document.getElementById("message-container").appendChild(msgDiv);
-	document.getElementById("message-input").value = "";
-}
+// function addMessageFnRe(data) {
+// 	var msgDiv = document.createElement("div");
+// 	msgDiv.innerText = `${data.username}: ${data.message}`;
+// 	msgDiv.setAttribute("class", "message received");
+// 	document.getElementById("message-container").appendChild(msgDiv);
+// 	document.getElementById("message-input").value = "";
+// }

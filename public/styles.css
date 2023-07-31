@@ -150,3 +150,15 @@
 	border: none;
 	border-radius: 5px;
 }
+
+.sent-date {
+	align-self: end;
+	font-family: cursive;
+	padding-right: 5px;
+}
+
+.received-date {
+	align-self: start;
+	font-family: cursive;
+	padding-left: 5px;
+}
