@@ -35,7 +35,7 @@
 	align-items: center;
 	gap: 50px;
 	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
-		url("../assets/Bubble\ background\ neomorphism\ \(Community\).png");
+		url("./assets/Bubble\ background\ neomorphism\ \(Community\).png");
 	/* background-image: url("/assets/Bubble\ background\ neomorphism\ \(Community\).svg"); */
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -99,7 +99,7 @@
 	height: 84vh;
 	/* background-color: #e1e1e1; */
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("../assets/Default\ WhatsApp\ background\ for\ people\ who\ lost\ it_\ Requested\ by\ u_Marvin_der_kuhle_.jpg");
+		url("./assets/Default\ WhatsApp\ background\ for\ people\ who\ lost\ it_\ Requested\ by\ u_Marvin_der_kuhle_.jpg");
 }
 
 .message {
@@ -161,4 +161,50 @@
 	align-self: start;
 	font-family: cursive;
 	padding-left: 5px;
+}
+
+#send-button {
+	background-color: #0f394a;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#message-input {
+	height: 5vh;
+}
+
+#send-button > img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 5vh;
+}
+
+.message {
+	border-bottom-right-radius: 25px;
+	border-top-right-radius: 25px;
+}
+
+.sent {
+	border-bottom-left-radius: 25px;
+	border-top-left-radius: 25px;
+}
+
+#send-button > img {
+	height: 100%;
+}
+
+#send-button {
+	height: 5vh;
+	border-radius: 50%;
+	width: fit-content;
+}
+
+#message-input {
+	width: 90%;
+}
+
+.chatroom-container > div:nth-child(3) {
+	gap: 5px;
 }
